@@ -100,6 +100,8 @@ textarea {
 html {
     height: 100%;
     font-family: Arial, Helvetica, sans-serif;
+    font-size: 1.5em;
+    color: #193441;
 }
 
 body {
@@ -116,32 +118,35 @@ body {
 }
 
 .items {
-    background-color: #d1e1ef;
+    background-color: #FCFFF5;
 }
 
 .stats {
-    background-color: #86b0d4;
+    background-color: #91AA9D;
+    position: relative;
 }
 
 .section-title {
-    background-color: #6da0cb;
+    background-color: #91AA9D;
     margin: 0;
-    padding: 10px;
+    padding: 0.5em 0.9em;
 }
 
 .items-container {
     display: flex;
     justify-content: space-evenly;
     flex-wrap: wrap;
+    padding: 0.6em;
 }
 
 .item {
-    margin: 10px;
+    margin: 1em;
     width: 80px;
     height: 80px;
     text-align: center;
     line-height: 80px;
-    background-color: #c71585;
+    background-color: #3E606F;
+    color: #FCFFF5;
     border-radius: 4px;
     transform: scale(1);
     animation: scaleDown 0.2s;
@@ -163,7 +168,35 @@ body {
 }
 
 .item-stats {
-    background-color: #fffaf0;
+    background-color: #D1DBBD;
+    height: 1.5em;
+}
+
+.items-summary {
+    position: absolute;
+    bottom: 1em;
+    left: 1em;
+}
+
+.button {
+    margin-top: 0.5em;
+    padding: 0.6em;
+    border-radius: 5px;
+    background-color: #3E606F;
+    color: #FCFFF5;
+    transform: scale(1);
+    animation: scaleDown 0.2s;
+}
+
+.button:hover {
+    cursor: pointer;
+    transform: scale(1.2);
+    animation: scaleUp .3s;
+}
+
+.button:active {
+    transform: scale(1.1);
+    animation: scaleActive 0.2s;
 }
 
 .scale-up-and-down {
@@ -230,6 +263,7 @@ body {
 
 .grid-cell-center {
     justify-self: center;
+    align-self: center;
 }
 
 /* ==========================================================================

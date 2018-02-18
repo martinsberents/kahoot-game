@@ -149,4 +149,23 @@
 
     const items = document.getElementsByClassName('item');
     addClickHandlerToItems(items);
+
+    const resetItemStats = function () {
+        const itemStatsContainer = document.querySelector('.items-stats-content');
+        itemStatsContainer.innerHTML = '';
+    };
+
+    const resetTotalAndBonus = function () {
+        const totalScoreElement = document.querySelector('.total-score');
+        totalScoreElement.innerHTML = 0;
+
+        const totalBonusElement = document.querySelector('.total-bonus');
+        totalBonusElement.innerHTML = 0;
+    };
+
+    window.resetGame = function () {
+        userStats.items = {};
+        resetItemStats();
+        resetTotalAndBonus();
+    };
 }());
