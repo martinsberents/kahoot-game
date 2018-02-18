@@ -20,15 +20,27 @@
             <section class="items">
                 <h3 class="section-title">Kahoot! points</h3>
                 <div class="items-container">
-                    <div class="item">A</div>
-                    <div class="item">B</div>
-                    <div class="item">C</div>
-                    <div class="item">D</div>
-                    <div class="item">E</div>
+                    <div class="item" data-item-id="A">A</div>
+                    <div class="item" data-item-id="B">B</div>
+                    <div class="item" data-item-id="C">C</div>
+                    <div class="item" data-item-id="D">D</div>
+                    <div class="item" data-item-id="E">E</div>
                 </div>
             </section>
             <section class="stats">
                 <h3 class="section-title">Player items</h3>
+                <div class="items-stats">
+                    <header class="items-stats-header three-column-grid">
+                        <span class="items-stats-header-title grid-cell-center">Item</span>
+                        <span class="items-stats-header-title grid-cell-center">Quantity</span>
+                        <span class="items-stats-header-title grid-cell-center">Score</span>
+                    </header>
+                    <div class="items-stats-content"></div>
+                </div>
+                <div class="items-summary">
+                    <div class="total-bonus-container">Bonus: <span class="total-bonus">0</span></div>
+                    <div class="total-score-container">Total: <span class="total-score">0</span></div>
+                </div>
             </section>
         </main>
         <script src="js/vendor/modernizr-3.5.0.min.js"></script>

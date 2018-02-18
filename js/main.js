@@ -1,4 +1,5 @@
 (function(){
+    let bindedRemoveAnimationClassFunction;
     const itemValueMap = {
         A: {
             value: 50,
@@ -54,22 +55,44 @@
         return createNewScoreEntry(itemStats);
     };
 
+    const removeAnimationClass = function (element, className) {
+        element.classList.remove(className);
+        element.removeEventListener('animationend', bindedRemoveAnimationClassFunction, false);
+    };
+
     const updateExistingScoreEntry = function (scoreEntry, itemStats) {
         const itemQuantity = scoreEntry.querySelector('.item-quantity');
         const itemScore = scoreEntry.querySelector('.item-score');
 
         itemQuantity.innerHTML = itemStats.quantity;
         itemScore.innerHTML = itemStats.score;
+
+        bindedRemoveAnimationClassFunction = removeAnimationClass.bind(this, scoreEntry, 'scale-up-and-down');
+        scoreEntry.addEventListener('animationend', bindedRemoveAnimationClassFunction, false);
+        scoreEntry.classList.add('scale-up-and-down');
     };
 
     const createNewScoreEntry = function (itemStats) {
-        const newScoreEntry = document.createElement('div');
-        newScoreEntry.className = 'item-stats three-column-grid rotate-in';
-        newScoreEntry.setAttribute('data-item-score-id', itemStats.id);
-        newScoreEntry.innerHTML = `<span class="grid-cell-center">${itemStats.id}</span> <span class="item-quantity grid-cell-center">${itemStats.quantity}</span> <span class="item-score grid-cell-center">${itemStats.score}</span>`;
+        const newScoreEntry = createScoreEntryElement(itemStats);
+
+        bindedRemoveAnimationClassFunction = removeAnimationClass.bind(this, newScoreEntry, 'rotate-in');
+        newScoreEntry.addEventListener('animationend', bindedRemoveAnimationClassFunction, false);
 
         const itemStatsContainer = document.querySelector('.items-stats-content');
         itemStatsContainer.appendChild(newScoreEntry);
+    };
+
+    const createScoreEntryElement = function (itemStats) {
+        const scoreEntryElement = document.createElement('div');
+        scoreEntryElement.className = 'item-stats three-column-grid rotate-in';
+        scoreEntryElement.setAttribute('data-item-score-id', itemStats.id);
+
+        let scoreEntryElementContent = `<span class="grid-cell-center">${itemStats.id}</span>`;
+        scoreEntryElementContent += `<span class="item-quantity grid-cell-center">${itemStats.quantity}</span>`;
+        scoreEntryElementContent += `<span class="item-score grid-cell-center">${itemStats.score}</span>`;
+        scoreEntryElement.innerHTML = scoreEntryElementContent;
+
+        return scoreEntryElement;
     };
 
     const calculateTotalScore = function () {
